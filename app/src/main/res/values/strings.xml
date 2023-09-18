@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">GitHubUser</string>
+    <string name="searchbar_hint">Search Username</string>
+    <string name="menu_search">menu search</string>
+    <string name="menu_home">menu home</string>
+    <string name="bio">Bio User</string>
+    <string name="menu_user">menu user</string>
+    <string name="menu_share">menu share</string>
+    <string name="nameProfile">Name</string>
+    <string name="username">Username</string>
+    <string name="seconds">%d seconds elapsed</string>
+    <string name="hello_dicoding">Hello Dicoding!</string>
+    <string name="count_follower">100</string>
+    <string name="count_following">100</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tab_follower">Followers</string>
+    <string name="tab_following">Following</string>
+    <string name="username_followers">Username Followers</string>
+    <string name="username_following">Username Following</string>
+
+</resources>
