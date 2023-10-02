@@ -12,10 +12,13 @@
     <string name="hello_dicoding">Hello Dicoding!</string>
     <string name="count_follower">100</string>
     <string name="count_following">100</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="menu_settings">Setting</string>
+    <string name="menu_favorite">Favorite</string>
     <string name="tab_follower">Followers</string>
     <string name="tab_following">Following</string>
     <string name="username_followers">Username Followers</string>
     <string name="username_following">Username Following</string>
+    <string name="dark_mode">Dark Mode</string>
+
 
 </resources>

@@ -1,15 +1,15 @@
-package com.dicoding.aplicationgithubuser.data.retrofit
+package com.dicoding.aplicationgithubuser.data.remote.retrofit
 
-import com.dicoding.aplicationgithubuser.data.response.DetailUserResponse
-import com.dicoding.aplicationgithubuser.data.response.GitHubResponse
-import com.dicoding.aplicationgithubuser.data.response.ItemsItem
+import com.dicoding.aplicationgithubuser.data.remote.response.DetailUserResponse
+import com.dicoding.aplicationgithubuser.data.remote.response.GitHubResponse
+import com.dicoding.aplicationgithubuser.data.remote.response.ItemsItem
 import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
     @GET("search/users")
     fun getGithub(
-        @Query("q") id : String
+        @Query("q") id: String
     ): Call<GitHubResponse>
 
     @GET("users/{username}")

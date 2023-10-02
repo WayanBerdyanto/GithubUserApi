@@ -1,5 +1,7 @@
-package com.dicoding.aplicationgithubuser.data.retrofit
+package com.dicoding.aplicationgithubuser.data.remote.retrofit
 
+
+import com.dicoding.aplicationgithubuser.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -7,14 +9,18 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
-    companion object{
+    companion object {
         fun getApiService(): ApiService {
+            val mySuperScretKey = BuildConfig.KEY
             val loggingInterceptor =
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val authInterceptor = Interceptor { chain ->
                 val req = chain.request()
                 val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", "token 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")
+                    .addHeader(
+                        "Authorization",
+                        mySuperScretKey
+                    )
                     .build()
                 chain.proceed(requestHeaders)
             }

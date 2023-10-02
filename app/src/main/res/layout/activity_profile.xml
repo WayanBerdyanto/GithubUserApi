@@ -22,7 +22,8 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/darkMode"
+                android:background="@color/bg_menu_dark_mode"
+                app:titleTextColor="@color/white"
                 app:menu="@menu/option_share"
                 app:title="@string/app_name" />
         </com.google.android.material.appbar.AppBarLayout>

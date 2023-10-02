@@ -4,42 +4,42 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.aplicationgithubuser.data.response.GitHubResponse
-import com.dicoding.aplicationgithubuser.data.response.ItemsItem
-import com.dicoding.aplicationgithubuser.data.retrofit.ApiConfig
+import com.dicoding.aplicationgithubuser.data.remote.response.GitHubResponse
+import com.dicoding.aplicationgithubuser.data.remote.response.ItemsItem
+import com.dicoding.aplicationgithubuser.data.remote.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
     private val _listGithub = MutableLiveData<List<ItemsItem>>()
-    val listGithub: LiveData<List<ItemsItem>> =  _listGithub
+    val listGithub: LiveData<List<ItemsItem>> = _listGithub
 
-    companion object{
+    companion object {
         private const val TAG = "MainActivity"
         private const val USER_ID = "s"
     }
-    init{
+
+    init {
         getUserGithub()
     }
 
-    fun getUserGithub(){
+    private fun getUserGithub() {
         _isLoading.value = true
         val client = ApiConfig.getApiService().getGithub(USER_ID)
-        client.enqueue(object: Callback<GitHubResponse> {
+        client.enqueue(object : Callback<GitHubResponse> {
             override fun onResponse(
                 call: Call<GitHubResponse>,
                 response: Response<GitHubResponse>
             ) {
                 _isLoading.value = false
-                if(response.isSuccessful){
-                    _listGithub.value =response.body()?.items
-                }
-                else{
+                if (response.isSuccessful) {
+                    _listGithub.value = response.body()?.items
+                } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
             }
@@ -52,18 +52,17 @@ class MainViewModel: ViewModel() {
         })
     }
 
-     fun searchUserGithub(q : String){
+    fun searchUserGithub(q: String) {
         val client = ApiConfig.getApiService().getGithub(q)
-        client.enqueue(object: Callback<GitHubResponse>{
+        client.enqueue(object : Callback<GitHubResponse> {
             override fun onResponse(
                 call: Call<GitHubResponse>,
                 response: Response<GitHubResponse>
             ) {
                 _isLoading.value = false
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     _listGithub.value = response.body()?.items
-                }
-                else{
+                } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
             }
